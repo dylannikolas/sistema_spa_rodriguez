@@ -1,0 +1,26 @@
+# Registro Detallado de Cambios (`CAMBIOS.md`)
+
+Este documento detalla las correcciones aplicadas sobre el proyecto **Salón Spa Rodríguez** en cumplimiento de las tareas **T1 a T15** de `correciones bd/indicaciones_agente_ia.md` y `correciones bd/correcciones_procedimientos.sql`.
+
+---
+
+## Resumen Tarea por Tarea (T1 a T15)
+
+| Tarea | Observación Corregida | Cambios Implementados |
+| :--- | :--- | :--- |
+| **T1** | **O1: Stock y total duplicados** | En `sp_registrar_venta` y `sp_registrar_pedido_compra` (`sql/procedimientos.sql`) se eliminaron los `UPDATE producto` y el cálculo manual del total; ahora los triggers del esquema (`trg_detalle_venta_descuenta_stock` y `trg_detalle_pedido_aumenta_stock`) actualizan el stock y `venta.total` una sola vez. Se eliminó el trigger redundante `trg_validar_venta_stock_before_insert`. Se mantuvo `sp_descontar_botella_cabina` para consumo interno en cabina. |
+| **T2** | **O6: Commit implícito en procedimientos** | Se eliminaron `START TRANSACTION`, `COMMIT`, `ROLLBACK` y los `EXIT HANDLER` de todos los procedimientos almacenados. Ahora `GestorBaseDatos` controla las transacciones (`conn.commit()` / `conn.rollback()`). |
+| **T3** | **O2, O3, O4: Autenticación segura** | Se creó el esquema independiente `spa_rodriguez_app` con las tablas `credencial` y `bitacora` (sin alterar las 18 tablas de `spa_rodriguez`). Se implementó hash **PBKDF2-HMAC-SHA256** (`210 000` iteraciones) con sal aleatoria de 16 bytes por usuario y `hmac.compare_digest`. `setup_auth.py` genera claves temporales aleatorias (`secrets.token_urlsafe`) con `debe_cambiar = 1`. El login consulta solo por `username`, bloquea 5 minutos tras 5 intentos fallidos, exige cambio de clave en el primer ingreso y no muestra contraseñas en ninguna pantalla. |
+| **T4** | **O5: Rol explícito** | El rol vive explícitamente en `spa_rodriguez_app.credencial.rol` (`ADMIN`, `TRABAJADOR`). Cambiar de rol nunca borra filas de `empleado`, y borrar una fila de `empleado` no altera el rol del usuario. |
+| **T5** | **O7: No modificar la base al conectarse** | Se eliminó todo el DDL (`ALTER TABLE`, `DROP/CREATE TRIGGER`, `DROP/CREATE PROCEDURE`) del arranque de la aplicación y se trasladó a `setup_procedimientos.py` y `setup_auth.py`. Al iniciar, `db.py` se conecta únicamente a la base configurada en `.env` (`DB_NAME`) y verifica en `information_schema.routines` si falta algún procedimiento. Se eliminaron todos los bloques `except Exception: pass`. |
+| **T6** | **O9: Autorización en la capa de datos** | `GestorBaseDatos` recibe `SesionUsuario` y protege cada método sensible con `@requiere_rol(...)`. Se impide que un administrador se elimine, desactive o degrade a sí mismo, o deje el sistema sin administradores. En la interfaz, un trabajador solo ve y gestiona sus propias citas (sin casilla para ver citas ajenas). |
+| **T7** | **O8, O9: Ciclo de vida de la cita** | `sp_cambiar_estado_cita(p_numero_registro, p_nuevo_estado, p_id_usuario)` permite únicamente `Pendiente -> Confirmada/Cancelada` y `Confirmada -> Atendida/Cancelada`, y valida que `p_id_usuario` coincida con el responsable cuando es invocado por un trabajador. |
+| **T8** | **O10, O13: Control horario de citas** | `sp_registrar_cita` rechaza citas que terminen a las `24:00` o después (`v_fin_seg >= 86400`) y bloquea solapamientos con otra cita no cancelada del mismo usuario y fecha. El nombre del cliente se antepone en `cita.observaciones` (`"Cliente: <nombres> <apellidos>."`). |
+| **T9** | **O11, O12: Clientes y preferencias** | Se quitó el parámetro y campo de teléfono del cliente en `sp_registrar_cliente`, en `registrar_cliente_validado()` y en la interfaz (justificación de diferencia frente a `correcciones_procedimientos.sql`: cumplimiento directo de T9 / O11 dado que `cliente` no tiene teléfono en el modelo de 18 tablas). La preferencia se elige de un combo cerrado (`readonly`) y `sp_registrar_cliente` rechaza cualquier preferencia fuera del catálogo. |
+| **T10** | **O13: Ventas con varios productos** | Se agregó `sp_registrar_venta_carrito` y `registrar_venta_carrito_atomica()` junto con un carrito en la interfaz para vender múltiples productos en una sola transacción atómica (todo o nada). |
+| **T11** | **Bitácora persistente** | Todas las autenticaciones, fallos, bloqueos y operaciones de escritura se registran en `spa_rodriguez_app.bitacora` y son consultables desde el módulo de Bitácora del Administrador. |
+| **T12** | **Estructura modular** | El sistema se dividió en `config.py`, `db.py`, `seguridad.py`, `permisos.py`, `auth.py`, `servicios.py`, `ui/portal_app.py` y `sistema_usuarios_spa.py`, eliminando el código de 16 tablas, rutas personales de OneDrive y contraseñas por defecto. |
+| **T13** | **Interfaz corregida** | Se corrigieron las etiquetas de indicadores (`Citas Registradas / Atendidas`, `Unidades Totales en Stock`, `Cuentas Activas / Especialistas`), se eliminaron las columnas de contraseñas y se aplicaron combos de catálogo. |
+| **T14** | **Pruebas automáticas** | Se implementó `tests/test_sistema_spa.py` con pruebas automáticas para T1–T10 sobre `spa_copia` con `ROLLBACK` automático. |
+| **T15** | **Documentación** | Se elaboraron `README.md`, `CAMBIOS.md` y `.env.example`. |
+

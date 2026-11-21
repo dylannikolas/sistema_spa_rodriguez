@@ -1,0 +1,9 @@
+﻿codigo_servicio,nombre,descripcion,precio,duracion
+1,Masaje relajante,Masaje corporal con aceites esenciales,90.00,60
+2,Masaje descontracturante,Masaje terapéutico de tejido profundo,110.00,60
+3,Limpieza facial profunda,"Limpieza, exfoliación y mascarilla",120.00,75
+4,Manicura en gel,Manicura con esmalte en gel,40.00,45
+5,Pedicura spa,Pedicura con exfoliación e hidratación,55.00,60
+6,Exfoliación corporal,Exfoliación con café y envoltura hidratante,100.00,50
+7,Depilación con cera,Depilación de zonas a elección,60.00,30
+8,Aromaterapia,,70.00,40

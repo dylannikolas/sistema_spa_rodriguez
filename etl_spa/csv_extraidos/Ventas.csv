@@ -1,0 +1,14 @@
+﻿fila_excel,N° venta,Fecha,Producto,Cantidad,Precio unit.,Total venta
+5,1,03/10/2026,Aceite esencial de lavanda,2,S/ 35.00,S/ 95.00
+6,1,03/10/2026,sales de baño aromaticas,1,25.00,95.00
+7,2,4/10/2026,Crema hidratante facial,,"42,50",42.50
+8,3,05-10-26,Exfoliante corporal de cafe,1,S/ 45,S/ 80.00
+9,3,05-10-26,Mascarilla de arcilla verde,1,38,S/ 80.00
+10,4,06/10/2026,Esmalte en gel,3 und,18.00,63.50
+11,4,06/10/2026,Removedor de esmalte,1,"9,50",63.50
+12,4,06/10/2026,Removedor de esmalte,1,"9,50",63.50
+13,5,7 de octubre de 2026,Aceite de almendras para masaje,1,S/. 48.00,"104,00"
+14,5,7 de octubre de 2026,toallas descartables,2,28.00,"104,00"
+15,,,,,,
+16,6,08/10/2026,Cera depilatoria tibia,1,S/ 32,32.00
+17,Total del período: S/ 420.00,,,,,

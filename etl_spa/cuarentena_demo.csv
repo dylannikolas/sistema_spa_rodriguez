@@ -1,0 +1,3 @@
+﻿tabla,fila_csv,motivo,datos
+cita,12,"error 1452: Cannot add or update a child row: a foreign key constraint fails (`spa_rodriguez`.`cita`, CONSTRAINT `fk_cita_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON UPDATE CASCADE)",99;2026-10-30;10:00:00;;Cliente: prueba de cuarentena.;1;999
+detalle_venta,12,error 4025: CONSTRAINT `detalle_venta.precio` failed for `spa_rodriguez`.`detalle_venta`,1;9;1;0.00

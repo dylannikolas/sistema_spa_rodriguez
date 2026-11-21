@@ -1,0 +1,21 @@
+# Archivos de entorno y credenciales (NUNCA subir a GitHub)
+.env
+**/.env
+credenciales_temporales_un_solo_uso.txt
+*credenciales*.txt
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Archivos temporales de Office y respaldos pesados
+~$*.docx
+~$*.xlsx
+*_BACKUP.docx
+*.mp4
+*.zip
+
+# Carpeta interna de indicaciones de revisión
+correciones bd/

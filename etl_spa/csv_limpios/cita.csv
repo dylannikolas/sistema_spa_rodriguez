@@ -1,0 +1,11 @@
+﻿numero_registro,fecha,hora_inicio,hora_fin,observaciones,id_estado,id_usuario
+1,2026-10-05,09:00:00,10:00:00,Cliente: María Fernández Luna. Prefiere aroma de lavanda.,3,2
+2,2026-10-05,11:00:00,12:15:00,Cliente: Patricia Gómez Rojas.,3,3
+3,2026-10-06,15:00:00,16:45:00,Cliente: Sofía Ramírez Torres. Manicura y pedicura el mismo día.,3,5
+4,2026-10-07,10:00:00,11:00:00,Cliente: Luis Alberto Chávez. Molestia en la espalda alta.,3,4
+5,2026-10-08,16:00:00,16:50:00,Cliente: Gabriela Núñez Ponce. Canceló con un día de anticipación.,4,1
+6,2026-10-10,10:00:00,11:40:00,Cliente: Valeria Castillo Meza. Masaje seguido de aromaterapia.,2,2
+7,2026-10-10,14:00:00,14:30:00,"Cliente: Camila Salas Vega. Piel sensible, usar cera hipoalergénica.",2,1
+8,2026-10-12,09:30:00,10:45:00,Cliente: Patricia Gómez Rojas.,1,3
+9,2026-10-13,17:00:00,18:00:00,Cliente: Camila Salas Vega.,1,5
+10,2026-10-14,11:00:00,12:00:00,Cliente: Daniela Ochoa Prado.,1,4

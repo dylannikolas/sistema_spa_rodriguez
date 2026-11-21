@@ -1,0 +1,165 @@
+﻿libro;hoja;fila_excel;columna;tipo_error;valor_sucio;valor_esperado;regla_aplicada
+Spa_Personal_y_Clientes.xlsx;Personal;5;Celular;TIPO_DATO;987 654 321;987654321;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Personal_y_Clientes.xlsx;Personal;5;Especialidad;NULO;;"NULL (solo usuario; no genera fila en EMPLEADO)";"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Personal_y_Clientes.xlsx;Personal;6;Nombre;TIPOGRAFICO;LUCIA PAREDES HUAMAN;Lucía Paredes Huamán;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Personal;6;Celular;TIPO_DATO;986-543-210;986543210;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Personal_y_Clientes.xlsx;Personal;7;Nombre;TIPOGRAFICO;carmen soto villanueva ;Carmen Soto Villanueva;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Personal;7;Celular;TIPO_DATO;+51 985432109;985432109;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Personal_y_Clientes.xlsx;Personal;7;Especialidad;TIPOGRAFICO;esteticista facial;Esteticista facial;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Personal;8;Nombre;TIPOGRAFICO;Marco Quispe  Ramos;Marco Quispe Ramos;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Personal;9;(fila completa);NULO;fila vacía;se elimina;"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Personal_y_Clientes.xlsx;Personal;10;Celular;NULO;;"NULL (opcional; no se inventa)";"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Personal_y_Clientes.xlsx;Personal;10;Especialidad;TIPOGRAFICO;Manicura y Pedicura;Manicura y pedicura;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Personal;11;Especialidad;NULO;;"NULL (solo usuario; no genera fila en EMPLEADO)";"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Personal_y_Clientes.xlsx;Personal;12;(fila completa);DUPLICADO;mismo registro escrito distinto (duplica la fila 6);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Personal_y_Clientes.xlsx;Personal;13;(fila completa);NULO;fila de resumen: Total personal: 6;se elimina (no es dato de negocio);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Personal_y_Clientes.xlsx;Clientes;5;Celular;TIPO_DATO;999 111 222;999111222 (no se carga: el modelo físico no tiene cliente.telefono);Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Personal_y_Clientes.xlsx;Clientes;5;Distrito;TIPOGRAFICO;miraflores;Miraflores;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;5;Preferencias;TIPOGRAFICO;masajes relajantes,  Aromas de lavanda ;Masajes relajantes | Aromas de lavanda;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;6;Cliente;TIPOGRAFICO;GOMEZ ROJAS, Patricia;Gómez Rojas, Patricia;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;6;Atendido por;TIPOGRAFICO;lucia paredes huaman;Lucía Paredes Huamán;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;7;Distrito;TIPOGRAFICO;Surco;Santiago de Surco;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;7;Preferencias;TIPOGRAFICO;Manicura en gel / Citas por la tarde;Manicura en gel | Citas por la tarde;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;8;Direccion;TIPOGRAFICO;Jr. Cusco  410 ;Jr. Cusco 410;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;9;(fila completa);NULO;fila vacía;se elimina;"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Personal_y_Clientes.xlsx;Clientes;10;Distrito;NULO;;San Borja (se recupera del registro duplicado más completo);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Personal_y_Clientes.xlsx;Clientes;11;(fila completa);DUPLICADO;registro completo del mismo cliente;se conserva el más completo;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Personal_y_Clientes.xlsx;Clientes;12;Celular;TIPO_DATO;99966677;NULL (8 dígitos: inválido) (no se carga: el modelo físico no tiene cliente.telefono);Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Personal_y_Clientes.xlsx;Clientes;12;Preferencias;TIPOGRAFICO;Pedicura - Productos hipoalergénicos;Pedicura | Productos hipoalergénicos;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;14;Cliente;TIPOGRAFICO;NUÑEZ PONCE, GABRIELA;Núñez Ponce, Gabriela;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;14;Preferencias;TIPOGRAFICO;Exfoliacion corporal, Citas por la mañana;Exfoliación corporal | Citas por la mañana;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Personal_y_Clientes.xlsx;Clientes;15;(fila completa);DUPLICADO;copia exacta de la fila (duplica la fila 13);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Catalogo.xlsx;Servicios;5;Precio;TIPO_DATO;S/ 90.00;90.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;5;Duracion;TIPO_DATO;60 min;60;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;6;Precio;TIPO_DATO;S/110;110.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;6;Duracion;TIPO_DATO;60 minutos;60;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;7;Precio;TIPO_DATO;120,00;120.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;7;Duracion;TIPO_DATO;1 h 15 min;75;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;8;Precio;TIPO_DATO;S/. 40;40.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;8;Duracion;TIPO_DATO;45';45;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;9;Servicio;TIPOGRAFICO;Pedicura Spa;Pedicura spa;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Servicios;9;Duracion;TIPO_DATO;1 h;60;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;10;Servicio;TIPOGRAFICO;EXFOLIACION CORPORAL;Exfoliación corporal;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Servicios;11;Servicio;TIPOGRAFICO;Depilacion con cera;Depilación con cera;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Servicios;11;Precio;TIPO_DATO;S/ 60;60.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Servicios;12;Descripcion;NULO;;"NULL (opcional; no se inventa)";"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Catalogo.xlsx;Servicios;13;(fila completa);DUPLICADO;copia exacta de la fila (duplica la fila 9);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Catalogo.xlsx;Productos;5;Producto;TIPOGRAFICO;Aceite escencial de lavanda;Aceite esencial de lavanda;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;5;Precio;TIPO_DATO;S/ 35.00;35.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;5;Almacen;TIPOGRAFICO;principal;Principal;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;6;Stock;TIPO_DATO;18 und;18;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;7;Precio;TIPO_DATO;S/. 42,50;42.50;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;8;Producto;TIPOGRAFICO;Mascarilla de arcilla berde;Mascarilla de arcilla verde;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;8;Almacen;TIPOGRAFICO;PRINCIPAL;Principal;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;9;Precio;TIPO_DATO; S/ 18;18.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;9;Almacen;TIPOGRAFICO;Recepcion;Recepción;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;10;Precio;TIPO_DATO;9,50;9.50;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;10;Stock;TIPO_DATO;40 unid.;40;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;10;Almacen;TIPOGRAFICO;recepción;Recepción;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;11;Producto;TIPOGRAFICO;Sales de baño aromaticas;Sales de baño aromáticas;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;12;Producto;TIPOGRAFICO;Exfoliante corporal de cafe;Exfoliante corporal de café;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;12;Precio;TIPO_DATO;S/ 45;45.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;13;Almacen;TIPOGRAFICO;Principal ;Principal;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Productos;14;Presentacion;NULO;;"NULL (opcional; no se inventa)";"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Catalogo.xlsx;Productos;14;Precio;TIPO_DATO;S/ 28.00;28.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Productos;15;(fila completa);DUPLICADO;mismo producto escrito distinto (duplica la fila 9);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Catalogo.xlsx;Insumos por servicio;5;Servicio;TIPOGRAFICO;masaje relajnte;Masaje relajante;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Insumos por servicio;12;Cantidad usada;TIPO_DATO;2 und;2;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Insumos por servicio;13;Producto;TIPOGRAFICO;esmalte en gel;Esmalte en gel;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Insumos por servicio;18;Producto;TIPOGRAFICO;Exfoliante corporal de cafe;Exfoliante corporal de café;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Insumos por servicio;22;Cantidad usada;TIPO_DATO;1.0;1;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Insumos por servicio;24;(fila completa);DUPLICADO;copia exacta de la fila (duplica la fila 15);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Catalogo.xlsx;Proveedores;5;Razon social;TIPOGRAFICO;DISTRIBUIDORA COSMETICA ANDINA SAC;Distribuidora Cosmética Andina S.A.C.;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Proveedores;5;Telefono;TIPO_DATO;987 100 100;987100100;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Proveedores;5;Correo;TIPOGRAFICO;VENTAS@COSMETICAANDINA.PE;ventas@cosmeticaandina.pe;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Proveedores;6;Razon social;TIPOGRAFICO;Aromas del Peru EIRL;Aromas del Perú E.I.R.L.;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Catalogo.xlsx;Proveedores;6;Telefono;TIPO_DATO;(987) 200200;987200200;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Proveedores;7;Correo;NULO;;"NULL (opcional; no se inventa)";"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Catalogo.xlsx;Proveedores;8;Telefono;TIPO_DATO;+51 987 400 400;987400400;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Catalogo.xlsx;Proveedores;9;(fila completa);DUPLICADO;mismo proveedor escrito distinto (duplica la fila 6);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Personal_y_Clientes.xlsx;Almacenes;6;Responsable;TIPOGRAFICO;rosa rodriguez salazar;Rosa Rodríguez Salazar;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;5;Hora inicio;FECHA_HORA;9:00 am;09:00:00;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;5;Hora fin;FECHA_HORA;10:00 am;10:00:00;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;5;Cliente;TIPOGRAFICO;maria fernandez luna;Fernández Luna, María;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;5;Servicio;TIPOGRAFICO;Masaje relajnte;Masaje relajante;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;5;Precio cobrado;TIPO_DATO;S/ 90.00;90.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Citas.xlsx;Citas;5;Estado;TIPOGRAFICO;atendida;Atendida;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;5;Registrada por;TIPOGRAFICO;LUCIA PAREDES HUAMAN;Lucía Paredes Huamán;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;6;Fecha;FECHA_HORA;5 de octubre de 2026;2026-10-05;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;6;Hora inicio;FECHA_HORA;11h00;11:00:00;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;6;Hora fin;NULO;;12:15:00 (hora inicio + duración del servicio: 75 min);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Citas.xlsx;Citas;6;Precio cobrado;TIPO_DATO;120,00;120.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Citas.xlsx;Citas;6;Estado;TIPOGRAFICO;ATENDIDA ;Atendida;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;7;Fecha;FECHA_HORA;06-10-2026;2026-10-06;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;7;Hora inicio;FECHA_HORA;3:00 pm;15:00:00;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;7;Hora fin;FECHA_HORA;4:45 pm;16:45:00;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;7;Precio cobrado;TIPO_DATO;S/. 40;40.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Citas.xlsx;Citas;8;Hora fin;NULO;;16:45:00 (se recupera de la otra línea de la misma cita);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Citas.xlsx;Citas;8;Servicio;TIPOGRAFICO;Pedicura Spa;Pedicura spa;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;8;Estado;TIPOGRAFICO;Atendidad;Atendida;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;9;Fecha;FECHA_HORA;07.10.2026;2026-10-07;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;9;Servicio;TIPOGRAFICO;Masage descontracturante;Masaje descontracturante;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;9;Precio cobrado;TIPO_DATO;S/105;105.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Citas.xlsx;Citas;9;Registrada por;TIPOGRAFICO;marco quispe ramos;Marco Quispe Ramos;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;10;(fila completa);DUPLICADO;copia exacta de la fila (duplica la fila 9);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Citas.xlsx;Citas;11;(fila completa);NULO;fila vacía;se elimina;"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Citas.xlsx;Citas;12;Fecha;FECHA_HORA;8/10/26;2026-10-08;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;12;Hora inicio;FECHA_HORA;4:00 p. m.;16:00:00;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;12;Hora fin;FECHA_HORA;4:50 p. m.;16:50:00;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;12;Servicio;TIPOGRAFICO;Exfoliacion corporal;Exfoliación corporal;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;12;Estado;NULO;;"Cancelada (se recupera de Observaciones: ""Canceló…"")";"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Citas.xlsx;Citas;13;Estado;TIPOGRAFICO;confirmada;Confirmada;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;14;Servicio;TIPOGRAFICO;aromaterapia;Aromaterapia;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;15;Fecha;FECHA_HORA;10 oct 2026;2026-10-10;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Citas.xlsx;Citas;15;Precio cobrado;TIPO_DATO;S/ 60;60.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Citas.xlsx;Citas;15;Registrada por;TIPOGRAFICO;Rosa Rodriguez Salazar;Rosa Rodríguez Salazar;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;16;(fila completa);DUPLICADO;versión antigua de la cita 8 (hora 9:00 am);se conserva la versión con Modificado más reciente (09:30–10:45);Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Citas.xlsx;Citas;17;Precio cobrado;TIPO_DATO;S/ 120;120.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Citas.xlsx;Citas;18;Hora fin;INCONSISTENCIA;17:30;18:00:00 (hora inicio 17:00 + 60 min del servicio);Recalcular el dato derivado a partir del detalle
+Spa_Citas.xlsx;Citas;18;Estado;TIPOGRAFICO;pendiente;Pendiente;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;19;Estado;TIPOGRAFICO;Pendinte;Pendiente;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Citas.xlsx;Citas;20;(fila completa);NULO;fila de resumen: Total de citas registradas: 10;se elimina (no es dato de negocio);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Ventas_y_Pedidos.xlsx;Ventas;5;Precio unit.;TIPO_DATO;S/ 35.00;35.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;5;Total venta;TIPO_DATO;S/ 95.00;95.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;6;Producto;TIPOGRAFICO;sales de baño aromaticas;Sales de baño aromáticas;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Ventas;7;Fecha;FECHA_HORA;4/10/2026;2026-10-04;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Ventas_y_Pedidos.xlsx;Ventas;7;Cantidad;NULO;;1 (total ÷ precio unitario);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Ventas_y_Pedidos.xlsx;Ventas;7;Precio unit.;TIPO_DATO;42,50;42.50;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;8;Fecha;FECHA_HORA;05-10-26;2026-10-05;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Ventas_y_Pedidos.xlsx;Ventas;8;Producto;TIPOGRAFICO;Exfoliante corporal de cafe;Exfoliante corporal de café;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Ventas;8;Precio unit.;TIPO_DATO;S/ 45;45.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;8;Total venta;INCONSISTENCIA;S/ 80.00;83.00 (suma de cantidad × precio de sus líneas);Recalcular el dato derivado a partir del detalle
+Spa_Ventas_y_Pedidos.xlsx;Ventas;10;Cantidad;TIPO_DATO;3 und;3;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;11;Precio unit.;TIPO_DATO;9,50;9.50;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;12;(fila completa);DUPLICADO;copia exacta de la fila (duplica la fila 11);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Ventas_y_Pedidos.xlsx;Ventas;13;Fecha;FECHA_HORA;7 de octubre de 2026;2026-10-07;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Ventas_y_Pedidos.xlsx;Ventas;13;Precio unit.;TIPO_DATO;S/. 48.00;48.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;13;Total venta;TIPO_DATO;104,00;104.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;14;Producto;TIPOGRAFICO;toallas descartables;Toallas descartables;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Ventas;15;(fila completa);NULO;fila vacía;se elimina;"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Ventas_y_Pedidos.xlsx;Ventas;16;Precio unit.;TIPO_DATO;S/ 32;32.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Ventas;17;(fila completa);NULO;fila de resumen: Total del período: S/ 420.00;se elimina (no es dato de negocio);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;5;Proveedor;TIPOGRAFICO;Aromas del Peru EIRL;Aromas del Perú E.I.R.L.;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;5;Cantidad;TIPO_DATO;20 und;20;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;5;Precio unit.;TIPO_DATO;S/ 24.00;24.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;5;Registrado por;TIPOGRAFICO;Jorge Mendoza Caceres;Jorge Mendoza Cáceres;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;6;Precio unit.;TIPO_DATO;17,50;17.50;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;7;Fecha;FECHA_HORA;22-09-26;2026-09-22;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;7;Proveedor;TIPOGRAFICO;DISTRIBUIDORA COSMETICA ANDINA SAC;Distribuidora Cosmética Andina S.A.C.;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;7;Precio unit.;TIPO_DATO;S/ 29;29.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;7;Registrado por;TIPOGRAFICO;JORGE MENDOZA CÁCERES;Jorge Mendoza Cáceres;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;8;Producto;TIPOGRAFICO;Mascarilla de arcilla berde;Mascarilla de arcilla verde;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;9;(fila completa);DUPLICADO;copia exacta de la fila (duplica la fila 8);se conserva una sola;Conservar un solo registro (más reciente, más completo o primera ocurrencia)
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;10;Precio unit.;TIPO_DATO;S/ 34.00;34.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;11;Fecha;FECHA_HORA;1 de octubre de 2026;2026-10-01;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;11;Precio unit.;TIPO_DATO;S/ 19;19.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;12;Producto;TIPOGRAFICO;removedor de esmalte;Removedor de esmalte;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;12;Cantidad;TIPO_DATO;30 und;30;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;12;Precio unit.;TIPO_DATO;6,50;6.50;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;13;Fecha;NULO;;2026-10-01 (se recupera de las otras líneas del mismo pedido);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;14;Fecha;FECHA_HORA;06.10.2026;2026-10-06;Interpretar con día primero (dd/mm/aaaa, 24 h hora Lima) y convertir a DATE/TIME de MySQL
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;14;Proveedor;TIPOGRAFICO;Belleza Total Peru S.A.;Belleza Total Perú S.A.;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;14;Precio unit.;TIPO_DATO;S/ 22.00;22.00;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;14;Registrado por;TIPOGRAFICO;jorge mendoza caceres;Jorge Mendoza Cáceres;Normalizar (trim, mayúsculas, tildes) y validar contra diccionario/alias
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;15;Precio unit.;TIPO_DATO;31,50;31.50;Quitar S/, unidades, separadores y convertir al tipo de la columna
+Spa_Ventas_y_Pedidos.xlsx;Pedidos;16;(fila completa);NULO;fila de resumen: Total de pedidos: 4;se elimina (no es dato de negocio);"Recuperar desde otra columna/fila; si es opcional queda NULL; no se imputa media/mediana"

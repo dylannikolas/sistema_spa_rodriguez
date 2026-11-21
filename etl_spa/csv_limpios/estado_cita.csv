@@ -1,0 +1,5 @@
+﻿id_estado,descripcion
+1,Pendiente
+2,Confirmada
+3,Atendida
+4,Cancelada

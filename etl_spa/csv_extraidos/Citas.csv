@@ -1,0 +1,17 @@
+﻿fila_excel,N° cita,Fecha,Hora inicio,Hora fin,Cliente,Servicio,Precio cobrado,Estado,Registrada por,Observaciones,Modificado
+5,1,05/10/2026,9:00 am,10:00 am,maria fernandez luna,Masaje relajnte,S/ 90.00,atendida,LUCIA PAREDES HUAMAN,Prefiere aroma de lavanda.,03/10/2026 18:00
+6,2,5 de octubre de 2026,11h00,,Patricia Gómez Rojas,Limpieza facial profunda,"120,00",ATENDIDA ,Carmen Soto Villanueva,,03/10/2026 18:00
+7,3,06-10-2026,3:00 pm,4:45 pm,Sofía Ramírez Torres,Manicura en gel,S/. 40,Atendida,Andrea Vargas Delgado,Manicura y pedicura el mismo día.,04/10/2026 18:00
+8,3,06/10/2026,15:00,,Sofía Ramírez Torres,Pedicura Spa,55.00,Atendidad,Andrea Vargas Delgado,Manicura y pedicura el mismo día.,04/10/2026 18:00
+9,4,07.10.2026,10:00,11:00,Luis Alberto Chávez,Masage descontracturante,S/105,Atendida,marco quispe ramos,Molestia en la espalda alta.,05/10/2026 18:00
+10,4,07.10.2026,10:00,11:00,Luis Alberto Chávez,Masage descontracturante,S/105,Atendida,marco quispe ramos,Molestia en la espalda alta.,05/10/2026 18:00
+11,,,,,,,,,,,
+12,5,8/10/26,4:00 p. m.,4:50 p. m.,Gabriela Núñez Ponce,Exfoliacion corporal,100.00,,Rosa Rodríguez Salazar,Canceló con un día de anticipación.,06/10/2026 18:00
+13,6,10/10/2026,10:00,11:40,Valeria Castillo Meza,Masaje relajante,90.00,confirmada,Lucía Paredes Huamán,Masaje seguido de aromaterapia.,08/10/2026 18:00
+14,6,10/10/2026,10:00,11:40,Valeria Castillo Meza,aromaterapia,70.00,Confirmada,Lucía Paredes Huamán,Masaje seguido de aromaterapia.,08/10/2026 18:00
+15,7,10 oct 2026,14:00,14:30,Camila Salas Vega,Depilación con cera,S/ 60,Confirmada,Rosa Rodriguez Salazar,"Piel sensible, usar cera hipoalergénica.",08/10/2026 18:00
+16,8,12/10/2026,9:00 am,10:15 am,Patricia Gómez Rojas,Limpieza facial profunda,120.00,Pendiente,Carmen Soto Villanueva,,08/10/2026 17:40
+17,8,12/10/2026,09:30,10:45,Patricia Gómez Rojas,Limpieza facial profunda,S/ 120,Pendiente,Carmen Soto Villanueva,,10/10/2026 08:15
+18,9,13/10/2026,17:00,17:30,Camila Salas Vega,Pedicura spa,55.00,pendiente,Andrea Vargas Delgado,,11/10/2026 18:00
+19,10,14/10/2026,11:00,12:00,Daniela Ochoa Prado,Masaje descontracturante,110.00,Pendinte,Marco Quispe Ramos,,12/10/2026 18:00
+20,Total de citas registradas: 10,,,,,,,,,,

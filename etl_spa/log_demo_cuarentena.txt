@@ -1,0 +1,168 @@
+=== ETL Salón Spa Rodríguez (origen: libros Excel) ===
+
+EXTRACCIÓN · Leer los libros Excel (.xlsx) y convertir cada hoja a CSV
+  Libro Spa_Personal_y_Clientes.xlsx: hojas ['Personal', 'Clientes', 'Almacenes']
+  [PASS] Personal: cabecera en la fila 4; 9 filas × 4 columnas extraídas = 9 × 4 de la hoja
+  [PASS] Clientes: cabecera en la fila 4; 11 filas × 6 columnas extraídas = 11 × 6 de la hoja
+  [PASS] Almacenes: cabecera en la fila 4; 2 filas × 2 columnas extraídas = 2 × 2 de la hoja
+  Libro Spa_Catalogo.xlsx: hojas ['Servicios', 'Productos', 'Insumos por servicio', 'Proveedores']
+  [PASS] Servicios: cabecera en la fila 4; 9 filas × 4 columnas extraídas = 9 × 4 de la hoja
+  [PASS] Productos: cabecera en la fila 4; 11 filas × 5 columnas extraídas = 11 × 5 de la hoja
+  [PASS] Insumos por servicio: cabecera en la fila 4; 20 filas × 3 columnas extraídas = 20 × 3 de la hoja
+  [PASS] Proveedores: cabecera en la fila 4; 5 filas × 3 columnas extraídas = 5 × 3 de la hoja
+  Libro Spa_Citas.xlsx: hojas ['Citas']
+  [PASS] Citas: cabecera en la fila 4; 16 filas × 11 columnas extraídas = 16 × 11 de la hoja
+  Libro Spa_Ventas_y_Pedidos.xlsx: hojas ['Ventas', 'Pedidos', 'Resumen']
+  [PASS] Ventas: cabecera en la fila 4; 13 filas × 6 columnas extraídas = 13 × 6 de la hoja
+  [PASS] Pedidos: cabecera en la fila 4; 12 filas × 7 columnas extraídas = 12 × 7 de la hoja
+    · hoja "Resumen" ignorada (hoja de apoyo, no contiene datos del modelo)
+
+TRANSFORMACIÓN · Limpieza de los CSV extraídos (sin tocar la base de datos)
+  [DEMO] se agregaron 2 filas inválidas para probar la cuarentena
+  Personal               leídas=  9  vacías=1  resumen=1  duplicados=1  útiles=6
+  Almacenes              leídas=  2  vacías=0  resumen=0  duplicados=0  útiles=2
+  Clientes               leídas= 11  vacías=1  resumen=0  duplicados=2  útiles=8
+  Servicios              leídas=  9  vacías=0  resumen=0  duplicados=1  útiles=8
+  Productos              leídas= 11  vacías=0  resumen=0  duplicados=1  útiles=10
+  Insumos por servicio   leídas= 20  vacías=0  resumen=0  duplicados=1  útiles=19
+  Proveedores            leídas=  5  vacías=0  resumen=0  duplicados=1  útiles=4
+  Citas                  leídas= 16  vacías=1  resumen=1  duplicados=2  útiles=12
+  Ventas                 leídas= 13  vacías=1  resumen=1  duplicados=1  útiles=10
+  Pedidos                leídas= 12  vacías=0  resumen=1  duplicados=1  útiles=10
+  correcciones por operación: DUPLICADO=11, FECHA_HORA=20, INCONSISTENCIA=2, NULO=20, TIPOGRAFICO=60, TIPO_DATO=58
+  [PASS] Ningún valor quedó sin reconocer (revisión manual = 0)
+
+FASE 1 · Conexión y preparación del destino
+  [PASS] Conexión exitosa a localhost:3306
+  [PASS] Versión 10.11.14-MariaDB-0ubuntu0.24.04.1 aplica los CHECK (MySQL ≥ 8.0.16 / MariaDB ≥ 10.2.1)
+  [PASS] Existen las 18 tablas del modelo físico  tablas=18
+  [PASS] Existen las 19 llaves foráneas  fks=19
+  [PASS] Destino preparado: triggers de stock retirados y tablas vacías (la estructura se conserva)  triggers=0, filas=0
+
+FASE 2 · Validar los CSV transformados (ya limpios)
+  usuario                6 filas · encabezados, tipos, obligatorios y claves OK
+  especialidad           4 filas · encabezados, tipos, obligatorios y claves OK
+  preferencia           11 filas · encabezados, tipos, obligatorios y claves OK
+  estado_cita            4 filas · encabezados, tipos, obligatorios y claves OK
+  proveedor              4 filas · encabezados, tipos, obligatorios y claves OK
+  servicio               8 filas · encabezados, tipos, obligatorios y claves OK
+  almacen                2 filas · encabezados, tipos, obligatorios y claves OK
+  empleado               4 filas · encabezados, tipos, obligatorios y claves OK
+  cliente                8 filas · encabezados, tipos, obligatorios y claves OK
+  cliente_preferencia   12 filas · encabezados, tipos, obligatorios y claves OK
+  producto              10 filas · encabezados, tipos, obligatorios y claves OK
+  cita                  11 filas · encabezados, tipos, obligatorios y claves OK
+  cita_servicio         12 filas · encabezados, tipos, obligatorios y claves OK
+  servicio_producto     19 filas · encabezados, tipos, obligatorios y claves OK
+  pedido_compra          4 filas · encabezados, tipos, obligatorios y claves OK
+  detalle_pedido        10 filas · encabezados, tipos, obligatorios y claves OK
+  venta                  6 filas · encabezados, tipos, obligatorios y claves OK
+  detalle_venta         11 filas · encabezados, tipos, obligatorios y claves OK
+  [PASS] Los 18 CSV existen, son legibles (UTF-8), con encabezados iguales a las columnas, tipos válidos, obligatorios completos y sin claves repetidas
+
+FASE 3 · Cargar los CSV en MySQL (orden de llaves foráneas; las filas que violan una restricción van a cuarentena)
+  usuario              leídas=  6  insertadas=  6  rechazadas=0  (1 ms)
+  especialidad         leídas=  4  insertadas=  4  rechazadas=0  (1 ms)
+  preferencia          leídas= 11  insertadas= 11  rechazadas=0  (1 ms)
+  estado_cita          leídas=  4  insertadas=  4  rechazadas=0  (0 ms)
+  proveedor            leídas=  4  insertadas=  4  rechazadas=0  (1 ms)
+  servicio             leídas=  8  insertadas=  8  rechazadas=0  (1 ms)
+  almacen              leídas=  2  insertadas=  2  rechazadas=0  (1 ms)
+  empleado             leídas=  4  insertadas=  4  rechazadas=0  (1 ms)
+  cliente              leídas=  8  insertadas=  8  rechazadas=0  (1 ms)
+  cliente_preferencia  leídas= 12  insertadas= 12  rechazadas=0  (1 ms)
+  producto             leídas= 10  insertadas= 10  rechazadas=0  (1 ms)
+  cita                 leídas= 11  insertadas= 10  rechazadas=1  (2 ms)
+  cita_servicio        leídas= 12  insertadas= 12  rechazadas=0  (0 ms)
+  servicio_producto    leídas= 19  insertadas= 19  rechazadas=0  (0 ms)
+  pedido_compra        leídas=  4  insertadas=  4  rechazadas=0  (1 ms)
+  detalle_pedido       leídas= 10  insertadas= 10  rechazadas=0  (0 ms)
+  venta                leídas=  6  insertadas=  6  rechazadas=0  (1 ms)
+  detalle_venta        leídas= 11  insertadas= 10  rechazadas=1  (3 ms)
+  COMMIT · cuarentena.csv: 2 fila(s) rechazada(s) · triggers de stock creados de nuevo
+    CUARENTENA cita fila 12: error 1452: Cannot add or update a child row: a foreign key constraint fails (`spa_rodrigu
+    CUARENTENA detalle_venta fila 12: error 4025: CONSTRAINT `detalle_venta.precio` failed for `spa_rodriguez`.`detalle_venta`
+  [PASS] Cuarentena: las 2 filas inválidas fueron rechazadas con su motivo  2 rechazadas
+
+FASE 4 · Verificar la migración
+  [PASS] usuario: filas leídas (6) = insertadas (6) + rechazadas (0)
+  [PASS] especialidad: filas leídas (4) = insertadas (4) + rechazadas (0)
+  [PASS] preferencia: filas leídas (11) = insertadas (11) + rechazadas (0)
+  [PASS] estado_cita: filas leídas (4) = insertadas (4) + rechazadas (0)
+  [PASS] proveedor: filas leídas (4) = insertadas (4) + rechazadas (0)
+  [PASS] servicio: filas leídas (8) = insertadas (8) + rechazadas (0)
+  [PASS] almacen: filas leídas (2) = insertadas (2) + rechazadas (0)
+  [PASS] empleado: filas leídas (4) = insertadas (4) + rechazadas (0)
+  [PASS] cliente: filas leídas (8) = insertadas (8) + rechazadas (0)
+  [PASS] cliente_preferencia: filas leídas (12) = insertadas (12) + rechazadas (0)
+  [PASS] producto: filas leídas (10) = insertadas (10) + rechazadas (0)
+  [PASS] cita: filas leídas (11) = insertadas (10) + rechazadas (1)
+  [PASS] cita_servicio: filas leídas (12) = insertadas (12) + rechazadas (0)
+  [PASS] servicio_producto: filas leídas (19) = insertadas (19) + rechazadas (0)
+  [PASS] pedido_compra: filas leídas (4) = insertadas (4) + rechazadas (0)
+  [PASS] detalle_pedido: filas leídas (10) = insertadas (10) + rechazadas (0)
+  [PASS] venta: filas leídas (6) = insertadas (6) + rechazadas (0)
+  [PASS] detalle_venta: filas leídas (11) = insertadas (10) + rechazadas (1)
+  [PASS] Total: 146 leídas = 144 insertadas + 2 rechazadas
+  [PASS] usuario: contenido idéntico al esperado
+  [PASS] especialidad: contenido idéntico al esperado
+  [PASS] preferencia: contenido idéntico al esperado
+  [PASS] estado_cita: contenido idéntico al esperado
+  [PASS] proveedor: contenido idéntico al esperado
+  [PASS] servicio: contenido idéntico al esperado
+  [PASS] almacen: contenido idéntico al esperado
+  [PASS] empleado: contenido idéntico al esperado
+  [PASS] cliente: contenido idéntico al esperado
+  [PASS] cliente_preferencia: contenido idéntico al esperado
+  [PASS] producto: contenido idéntico al esperado
+  [PASS] cita: contenido idéntico al esperado
+  [PASS] cita_servicio: contenido idéntico al esperado
+  [PASS] servicio_producto: contenido idéntico al esperado
+  [PASS] pedido_compra: contenido idéntico al esperado
+  [PASS] detalle_pedido: contenido idéntico al esperado
+  [PASS] venta: contenido idéntico al esperado
+  [PASS] detalle_venta: contenido idéntico al esperado
+  [PASS] Filas huérfanas = 0 en las 19 llaves foráneas  0
+  [PASS] venta.total = suma de cantidad × precio de su detalle  0 descuadres
+  [PASS] cita.hora_fin = hora_inicio + duración de sus servicios  0 descuadres
+  [PASS] Stock final por producto = stock inicial + pedidos − ventas  0 descuadres
+  [PASS] Triggers de stock activos de nuevo
+
+FASE 5 · Pruebas de reglas de negocio
+  Citas por estado:
+    Atendida    4
+    Pendiente   3
+    Confirmada  2
+    Cancelada   1
+  Ingresos por servicios atendidos: S/ 410.00   |   Ventas de productos: S/ 420.00
+  [PASS] Ingresos y ventas coinciden con lo esperado (S/ 410.00 y S/ 420.00)  servicios=410.00, ventas=420.00
+  Productos con stock bajo (< 30):
+    Cera depilatoria tibia             26
+  Pruebas negativas (cada rechazo es el resultado ESPERADO; todo se revierte con ROLLBACK):
+  [PASS] CHECK: precio de detalle_venta ≤ 0  rechazado con error 4025 (esperado)
+  [PASS] CHECK: cantidad ≤ 0 en detalle_pedido  rechazado con error 4025 (esperado)
+  [PASS] CHECK: teléfono de 9 dígitos  rechazado con error 4025 (esperado)
+  [PASS] FK: cita con usuario inexistente  rechazado con error 1452 (esperado)
+  [PASS] UNIQUE: estado de cita repetido  rechazado con error 1062 (esperado)
+  [PASS] Trigger: venta mayor al stock disponible  rechazado con error 1644 (esperado)
+  [PASS] CASCADE: al borrar un cliente se borran sus preferencias  12 → 10 (revertido)
+  [PASS] ROLLBACK dejó los datos intactos
+
+DETECCIÓN · errores sembrados en los Excel vs. corregidos por el ETL
+  FECHA_HORA      sembrados= 18  detectados= 18
+  [PASS] FECHA_HORA: se detectaron los 18 errores sembrados  18/18
+  INCONSISTENCIA  sembrados=  2  detectados=  2
+  [PASS] INCONSISTENCIA: se detectaron los 2 errores sembrados  2/2
+  NULO            sembrados= 12  detectados= 12
+  [PASS] NULO: se detectaron los 12 errores sembrados  12/12
+  TIPOGRAFICO     sembrados= 60  detectados= 60
+  [PASS] TIPOGRAFICO: se detectaron los 60 errores sembrados  60/60
+  TIPO_DATO       sembrados= 53  detectados= 53
+  [PASS] TIPO_DATO: se detectaron los 53 errores sembrados  53/53
+  [PASS] Duplicados eliminados = sembrados  11/11
+  [PASS] Filas vacías y de resumen eliminadas = sembradas  8/8
+
+FASE 6 · Reporte y evidencias
+  Reporte: reporte_etl.md · log_etl.txt · cuarentena.csv · csv_extraidos/ · csv_limpios/
+
+RESULTADO: 76 PASS · 0 FAIL · 0 AVISO  (0.2 s)

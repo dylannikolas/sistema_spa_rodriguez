@@ -1,0 +1,438 @@
+{"version": "8.0.42", "sql_mode": "ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION", "fecha": "2026-10-23T20:41:29", "db": "spa_rodriguez_pruebas", "filas": 144, "triggers": [["trg_detalle_venta_descuenta_stock", "AFTER", "INSERT", "detalle_venta"], ["trg_detalle_pedido_aumenta_stock", "AFTER", "INSERT", "detalle_pedido"]], "fks": 19, "checks": 14, "checksum_igual": true, "checksums": {"usuario": [841242259, 841242259], "especialidad": [4161926124, 4161926124], "estado_cita": [1389371797, 1389371797], "preferencia": [2358140765, 2358140765], "proveedor": [637000529, 637000529], "servicio": [1541423405, 1541423405], "venta": [2746692120, 2746692120], "almacen": [2623979684, 2623979684], "empleado": [616555129, 616555129], "cliente": [3599122626, 3599122626], "cliente_preferencia": [2860325187, 2860325187], "producto": [977546032, 977546032], "cita": [921748482, 921748482], "cita_servicio": [1465091403, 1465091403], "servicio_producto": [1295391556, 1295391556], "pedido_compra": [3022785494, 3022785494], "detalle_pedido": [2297559956, 2297559956], "detalle_venta": [488736432, 488736432]}}
+
+######## C1
+> SELECT CONCAT(cl.nombres, ' ', cl.apellidos)                  AS cliente,
+   cliente | cita | fecha | horario | servicios | estado | registrada_por
+   Camila Salas Vega | 7 | 10/10/2026 | 14:00 - 14:30 | Depilación con cera | Confirmada | Rosa Rodríguez Salazar
+   Camila Salas Vega | 9 | 13/10/2026 | 17:00 - 18:00 | Pedicura spa | Pendiente | Andrea Vargas Delgado
+   Daniela Ochoa Prado | 10 | 14/10/2026 | 11:00 - 12:00 | Masaje descontracturante | Pendiente | Marco Quispe Ramos
+   Gabriela Núñez Ponce | 5 | 08/10/2026 | 16:00 - 16:50 | Exfoliación corporal | Cancelada | Rosa Rodríguez Salazar
+   Luis Alberto Chávez | 4 | 07/10/2026 | 10:00 - 11:00 | Masaje descontracturante | Atendida | Marco Quispe Ramos
+   María Fernández Luna | 1 | 05/10/2026 | 09:00 - 10:00 | Masaje relajante | Atendida | Lucía Paredes Huamán
+   Patricia Gómez Rojas | 2 | 05/10/2026 | 11:00 - 12:15 | Limpieza facial profunda | Atendida | Carmen Soto Villanueva
+   Patricia Gómez Rojas | 8 | 12/10/2026 | 09:30 - 10:45 | Limpieza facial profunda | Pendiente | Carmen Soto Villanueva
+   Sofía Ramírez Torres | 3 | 06/10/2026 | 15:00 - 16:45 | Manicura en gel, Pedicura spa | Atendida | Andrea Vargas Delgado
+   Valeria Castillo Meza | 6 | 10/10/2026 | 10:00 - 11:40 | Aromaterapia, Masaje relajante | Confirmada | Lucía Paredes Huamán
+
+######## C2
+> SELECT s.codigo_servicio,
+   codigo_servicio | servicio | veces_solicitado | atendidas | canceladas
+   3 | Limpieza facial profunda | 2 | 1 | 0
+   2 | Masaje descontracturante | 2 | 1 | 0
+   1 | Masaje relajante | 2 | 1 | 0
+   5 | Pedicura spa | 2 | 1 | 0
+   8 | Aromaterapia | 1 | 0 | 0
+   7 | Depilación con cera | 1 | 0 | 0
+   6 | Exfoliación corporal | 1 | 0 | 1
+   4 | Manicura en gel | 1 | 1 | 0
+
+######## C3
+> SELECT COALESCE(s.nombre, 'TOTAL')    AS servicio,
+   servicio | atenciones | ingreso_estimado | valor_precio_lista | diferencia
+   Limpieza facial profunda | 1 | 120.00 | 120.00 | 0.00
+   Manicura en gel | 1 | 40.00 | 40.00 | 0.00
+   Masaje descontracturante | 1 | 105.00 | 110.00 | 5.00
+   Masaje relajante | 1 | 90.00 | 90.00 | 0.00
+   Pedicura spa | 1 | 55.00 | 55.00 | 0.00
+   TOTAL | 5 | 410.00 | 415.00 | 5.00
+
+######## C4
+> SELECT e.id_estado,
+   id_estado | estado | cantidad_citas | porcentaje
+   1 | Pendiente | 3 | 30.0
+   2 | Confirmada | 2 | 20.0
+   3 | Atendida | 4 | 40.0
+   4 | Cancelada | 1 | 10.0
+
+######## C5
+> SELECT p.codigo_producto,
+   codigo_producto | producto | stock | codigo_almacen | responsable_almacen | servicios_que_lo_usan | stock_promedio
+   9 | Cera depilatoria tibia | 26 | 1 | Jorge Mendoza Cáceres | 1 | 55.8
+   2 | Aceite de almendras para masaje | 32 | 1 | Jorge Mendoza Cáceres | 2 | 55.8
+   8 | Exfoliante corporal de café | 34 | 1 | Jorge Mendoza Cáceres | 1 | 55.8
+   4 | Mascarilla de arcilla verde | 41 | 1 | Jorge Mendoza Cáceres | 1 | 55.8
+   1 | Aceite esencial de lavanda | 43 | 1 | Jorge Mendoza Cáceres | 2 | 55.8
+
+######## C6
+> SELECT p.codigo_producto,
+   codigo_producto | producto | unidades_vendidas | num_ventas | importe | ultima_venta
+   5 | Esmalte en gel | 3 | 1 | 54.00 | 06/10/2026
+   1 | Aceite esencial de lavanda | 2 | 1 | 70.00 | 03/10/2026
+   10 | Toallas descartables | 2 | 1 | 56.00 | 07/10/2026
+   2 | Aceite de almendras para masaje | 1 | 1 | 48.00 | 07/10/2026
+   8 | Exfoliante corporal de café | 1 | 1 | 45.00 | 05/10/2026
+
+######## C7
+> SELECT COALESCE(DATE_FORMAT(v.fecha, '%d/%m/%Y'), 'TOTAL') AS fecha,
+   fecha | num_ventas | monto_vendido
+   03/10/2026 | 1 | 95.00
+   04/10/2026 | 1 | 42.50
+   05/10/2026 | 1 | 83.00
+   06/10/2026 | 1 | 63.50
+   07/10/2026 | 1 | 104.00
+   08/10/2026 | 1 | 32.00
+   TOTAL | 6 | 420.00
+> SELECT YEAR(v.fecha)          AS anio,
+   anio | mes | num_ventas | monto_vendido | ticket_promedio
+   2026 | 10 | 6 | 420.00 | 70.00
+
+######## C8
+> SELECT pc.id_pedido,
+   id_pedido | fecha | proveedor | producto | cantidad | precio_compra | subtotal | solicitado_por
+   1 | 15/09/2026 | Aromas del Perú E.I.R.L. | Aceite esencial de lavanda | 20 | 24.00 | 480.00 | Jorge Mendoza Cáceres
+   1 | 15/09/2026 | Aromas del Perú E.I.R.L. | Sales de baño aromáticas | 30 | 17.50 | 525.00 | Jorge Mendoza Cáceres
+   2 | 22/09/2026 | Distribuidora Cosmética Andina S.A.C. | Aceite de almendras para masaje | 15 | 34.00 | 510.00 | Jorge Mendoza Cáceres
+   2 | 22/09/2026 | Distribuidora Cosmética Andina S.A.C. | Crema hidratante facial | 25 | 29.00 | 725.00 | Jorge Mendoza Cáceres
+   2 | 22/09/2026 | Distribuidora Cosmética Andina S.A.C. | Mascarilla de arcilla verde | 20 | 26.00 | 520.00 | Jorge Mendoza Cáceres
+   3 | 01/10/2026 | Insumos Spa Lima S.A.C. | Esmalte en gel | 50 | 12.00 | 600.00 | Rosa Rodríguez Salazar
+   3 | 01/10/2026 | Insumos Spa Lima S.A.C. | Removedor de esmalte | 30 | 6.50 | 195.00 | Rosa Rodríguez Salazar
+   3 | 01/10/2026 | Insumos Spa Lima S.A.C. | Toallas descartables | 40 | 19.00 | 760.00 | Rosa Rodríguez Salazar
+   4 | 06/10/2026 | Belleza Total Perú S.A. | Cera depilatoria tibia | 12 | 22.00 | 264.00 | Jorge Mendoza Cáceres
+   4 | 06/10/2026 | Belleza Total Perú S.A. | Exfoliante corporal de café | 15 | 31.50 | 472.50 | Jorge Mendoza Cáceres
+> SELECT pr.razon_social                              AS proveedor,
+   proveedor | pedidos | unidades | monto_comprado
+   Distribuidora Cosmética Andina S.A.C. | 1 | 60 | 1755.00
+   Insumos Spa Lima S.A.C. | 1 | 120 | 1555.00
+   Aromas del Perú E.I.R.L. | 1 | 50 | 1005.00
+   Belleza Total Perú S.A. | 1 | 27 | 736.50
+
+######## C9
+> SELECT CONCAT(cl.nombres, ' ', cl.apellidos)        AS cliente,
+   cliente | total_citas | citas_no_canceladas | servicios_reservados | ultima_cita
+   Camila Salas Vega | 2 | 2 | 2 | 13/10/2026
+   Patricia Gómez Rojas | 2 | 2 | 2 | 12/10/2026
+   Sofía Ramírez Torres | 1 | 1 | 2 | 06/10/2026
+   Valeria Castillo Meza | 1 | 1 | 2 | 10/10/2026
+   Daniela Ochoa Prado | 1 | 1 | 1 | 14/10/2026
+> SELECT CONCAT(cl.nombres, ' ', cl.apellidos) AS cliente,
+   cliente | total_citas
+   Camila Salas Vega | 2
+   Patricia Gómez Rojas | 2
+
+######## C10
+> SELECT v.numero_venta,
+   numero_venta | fecha | lineas | total_registrado | total_calculado | diferencia | verificacion
+   1 | 03/10/2026 | 2 | 95.00 | 95.00 | 0.00 | Consistente
+   2 | 04/10/2026 | 1 | 42.50 | 42.50 | 0.00 | Consistente
+   3 | 05/10/2026 | 2 | 83.00 | 83.00 | 0.00 | Consistente
+   4 | 06/10/2026 | 2 | 63.50 | 63.50 | 0.00 | Consistente
+   5 | 07/10/2026 | 2 | 104.00 | 104.00 | 0.00 | Consistente
+   6 | 08/10/2026 | 1 | 32.00 | 32.00 | 0.00 | Consistente
+> SELECT COUNT(*) AS ventas_con_descuadre
+   ventas_con_descuadre
+   0
+
+######## R1
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS existe_usuario_999 FROM usuario WHERE id_usuario = 999
+   existe_usuario_999
+   0
+> INSERT INTO cita (fecha, hora_inicio, hora_fin, observaciones, id_estado, id_usuario)
+   ERROR 1452: Cannot add or update a child row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`cita`, CONSTRAINT `fk_cita_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE RESTRICT ON UPDATE CASCADE)
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS citas_registradas FROM cita
+   citas_registradas
+   10
+
+######## R2
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS existe_estado_99 FROM estado_cita WHERE id_estado = 99
+   existe_estado_99
+   0
+> INSERT INTO cita (fecha, hora_inicio, hora_fin, observaciones, id_estado, id_usuario)
+   ERROR 1452: Cannot add or update a child row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`cita`, CONSTRAINT `fk_cita_estado` FOREIGN KEY (`id_estado`) REFERENCES `estado_cita` (`id_estado`) ON DELETE RESTRICT ON UPDATE CASCADE)
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS citas_registradas FROM cita
+   citas_registradas
+   10
+
+######## R3
+> START TRANSACTION
+   OK, filas afectadas = 0
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   ERROR 3819: Check constraint 'detalle_venta_chk_1' is violated.
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   ERROR 3819: Check constraint 'detalle_venta_chk_1' is violated.
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS lineas_venta_1 FROM detalle_venta WHERE numero_venta = 1
+   lineas_venta_1
+   2
+
+######## R4
+> START TRANSACTION
+   OK, filas afectadas = 0
+> INSERT INTO producto (nombre, descripcion, precio_unitario, stock, codigo_almacen)
+   ERROR 3819: Check constraint 'producto_chk_1' is violated.
+> INSERT INTO servicio (nombre, descripcion, precio, duracion)
+   ERROR 3819: Check constraint 'servicio_chk_1' is violated.
+> UPDATE servicio SET precio = 0 WHERE codigo_servicio = 1
+   ERROR 3819: Check constraint 'servicio_chk_1' is violated.
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT codigo_servicio, nombre, precio FROM servicio WHERE codigo_servicio = 1
+   codigo_servicio | nombre | precio
+   1 | Masaje relajante | 90.00
+
+######## R5
+> START TRANSACTION
+   OK, filas afectadas = 0
+> INSERT INTO servicio (nombre, descripcion, precio, duracion)
+   ERROR 3819: Check constraint 'servicio_chk_2' is violated.
+> UPDATE servicio SET duracion = -15 WHERE codigo_servicio = 1
+   ERROR 3819: Check constraint 'servicio_chk_2' is violated.
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT codigo_servicio, nombre, duracion FROM servicio WHERE codigo_servicio = 1
+   codigo_servicio | nombre | duracion
+   1 | Masaje relajante | 60
+
+######## R6
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS existe_almacen_99 FROM almacen WHERE codigo_almacen = 99
+   existe_almacen_99
+   0
+> INSERT INTO producto (nombre, descripcion, precio_unitario, stock, codigo_almacen)
+   ERROR 1452: Cannot add or update a child row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`producto`, CONSTRAINT `fk_producto_almacen` FOREIGN KEY (`codigo_almacen`) REFERENCES `almacen` (`codigo_almacen`) ON DELETE RESTRICT ON UPDATE CASCADE)
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS productos_registrados FROM producto
+   productos_registrados
+   10
+
+######## R7
+> START TRANSACTION
+   OK, filas afectadas = 0
+> INSERT INTO usuario (nombre, telefono) VALUES ('Prueba R7-a', '12345')
+   ERROR 3819: Check constraint 'chk_usuario_telefono' is violated.
+> INSERT INTO usuario (nombre, telefono) VALUES ('Prueba R7-b', '98765432A')
+   ERROR 3819: Check constraint 'chk_usuario_telefono' is violated.
+> UPDATE proveedor SET telefono = '987-10010' WHERE codigo_proveedor = 1
+   ERROR 3819: Check constraint 'chk_proveedor_telefono' is violated.
+> INSERT INTO usuario (nombre, telefono) VALUES ('Prueba R7-c', '9876543210')
+   ERROR 1406: Data too long for column 'telefono' at row 1
+> INSERT INTO usuario (nombre, telefono) VALUES ('Prueba R7-d', '987111222')
+   OK, filas afectadas = 1
+> SELECT nombre, telefono FROM usuario WHERE nombre LIKE 'Prueba R7%'
+   nombre | telefono
+   Prueba R7-d | 987111222
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS usuarios_registrados FROM usuario
+   usuarios_registrados
+   6
+
+######## R8
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT codigo_producto, nombre, stock FROM producto WHERE codigo_producto = 3
+   codigo_producto | nombre | stock
+   3 | Crema hidratante facial | 54
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   ERROR 1644: Stock insuficiente para completar la venta
+> SELECT p.stock, v.total AS total_venta_6
+   stock | total_venta_6
+   54 | 32.00
+> ROLLBACK
+   OK, filas afectadas = 0
+
+######## R9
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS existe_proveedor_99 FROM proveedor WHERE codigo_proveedor = 99
+   existe_proveedor_99
+   0
+> INSERT INTO pedido_compra (fecha, id_usuario, codigo_proveedor)
+   ERROR 1452: Cannot add or update a child row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`pedido_compra`, CONSTRAINT `fk_pedido_proveedor` FOREIGN KEY (`codigo_proveedor`) REFERENCES `proveedor` (`codigo_proveedor`) ON DELETE RESTRICT ON UPDATE CASCADE)
+> INSERT INTO detalle_pedido (id_pedido, codigo_producto, cantidad, precio)
+   ERROR 1452: Cannot add or update a child row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`detalle_pedido`, CONSTRAINT `fk_detped_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido_compra` (`id_pedido`) ON DELETE CASCADE ON UPDATE CASCADE)
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS pedidos_registrados FROM pedido_compra
+   pedidos_registrados
+   4
+
+######## R10
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS preferencias_cliente_1 FROM cliente_preferencia WHERE codigo_cliente = 1
+   preferencias_cliente_1
+   2
+> DELETE FROM cliente WHERE codigo_cliente = 1
+   OK, filas afectadas = 1
+> SELECT COUNT(*) AS preferencias_cliente_1 FROM cliente_preferencia WHERE codigo_cliente = 1
+   preferencias_cliente_1
+   0
+> SELECT COUNT(*) AS servicios_cita_6 FROM cita_servicio WHERE numero_registro = 6
+   servicios_cita_6
+   2
+> DELETE FROM cita WHERE numero_registro = 6
+   OK, filas afectadas = 1
+> SELECT COUNT(*) AS servicios_cita_6 FROM cita_servicio WHERE numero_registro = 6
+   servicios_cita_6
+   0
+> DELETE FROM usuario WHERE id_usuario = 6
+   ERROR 1451: Cannot delete or update a parent row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`almacen`, CONSTRAINT `fk_almacen_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE RESTRICT ON UPDATE CASCADE)
+> DELETE FROM producto WHERE codigo_producto = 1
+   ERROR 1451: Cannot delete or update a parent row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`detalle_pedido`, CONSTRAINT `fk_detped_producto` FOREIGN KEY (`codigo_producto`) REFERENCES `producto` (`codigo_producto`) ON DELETE RESTRICT ON UPDATE CASCADE)
+> DELETE FROM preferencia WHERE id_preferencia = 3
+   ERROR 1451: Cannot delete or update a parent row: a foreign key constraint fails (`spa_rodriguez_pruebas`.`cliente_preferencia`, CONSTRAINT `fk_clipref_preferencia` FOREIGN KEY (`id_preferencia`) REFERENCES `preferencia` (`id_preferencia`) ON DELETE RESTRICT ON UPDATE CASCA)
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT (SELECT COUNT(*) FROM cliente)             AS clientes,
+   clientes | cliente_preferencia | citas | cita_servicio
+   8 | 12 | 10 | 12
+
+######## N1
+> START TRANSACTION
+   OK, filas afectadas = 0
+> INSERT INTO cita (fecha, hora_inicio, hora_fin, observaciones, id_estado, id_usuario)
+   OK, filas afectadas = 1
+> INSERT INTO cita (fecha, hora_inicio, hora_fin, observaciones, id_estado, id_usuario)
+   OK, filas afectadas = 1
+> SELECT a.numero_registro AS cita_a, b.numero_registro AS cita_b, a.id_usuario,
+   cita_a | cita_b | id_usuario | inicio_a | fin_a | inicio_b | fin_b
+   13 | 14 | 2 | 10:00:00 | 11:00:00 | 10:30:00 | 11:30:00
+> ROLLBACK
+   OK, filas afectadas = 0
+
+######## N2
+> START TRANSACTION
+   OK, filas afectadas = 0
+> INSERT INTO venta (fecha) VALUES ('2026-10-20')
+   OK, filas afectadas = 1
+> SELECT v.numero_venta, v.total, COUNT(d.codigo_producto) AS lineas_detalle
+   numero_venta | total | lineas_detalle
+   7 | 0.00 | 0
+> ROLLBACK
+   OK, filas afectadas = 0
+
+######## S1
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT codigo_producto, nombre, stock AS stock_inicial FROM producto WHERE codigo_producto = 3
+   codigo_producto | nombre | stock_inicial
+   3 | Crema hidratante facial | 54
+> INSERT INTO venta (fecha) VALUES ('2026-10-20')
+   OK, filas afectadas = 1
+> SET @v := LAST_INSERT_ID()
+   OK, filas afectadas = 0
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   OK, filas afectadas = 1
+> SELECT codigo_producto, nombre, stock AS stock_final FROM producto WHERE codigo_producto = 3
+   codigo_producto | nombre | stock_final
+   3 | Crema hidratante facial | 52
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT stock AS stock_tras_rollback FROM producto WHERE codigo_producto = 3
+   stock_tras_rollback
+   54
+
+######## S2
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT codigo_producto, nombre, stock AS stock_inicial FROM producto WHERE codigo_producto = 9
+   codigo_producto | nombre | stock_inicial
+   9 | Cera depilatoria tibia | 26
+> INSERT INTO pedido_compra (fecha, id_usuario, codigo_proveedor) VALUES ('2026-10-20', 6, 4)
+   OK, filas afectadas = 1
+> SET @p := LAST_INSERT_ID()
+   OK, filas afectadas = 0
+> INSERT INTO detalle_pedido (id_pedido, codigo_producto, cantidad, precio)
+   OK, filas afectadas = 1
+> SELECT codigo_producto, nombre, stock AS stock_final FROM producto WHERE codigo_producto = 9
+   codigo_producto | nombre | stock_final
+   9 | Cera depilatoria tibia | 36
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT stock AS stock_tras_rollback FROM producto WHERE codigo_producto = 9
+   stock_tras_rollback
+   26
+
+######## S3
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT codigo_producto, nombre, stock AS stock_inicial FROM producto WHERE codigo_producto = 9
+   codigo_producto | nombre | stock_inicial
+   9 | Cera depilatoria tibia | 26
+> INSERT INTO venta (fecha) VALUES ('2026-10-20')
+   OK, filas afectadas = 1
+> SET @v := LAST_INSERT_ID()
+   OK, filas afectadas = 0
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   ERROR 1644: Stock insuficiente para completar la venta
+> SELECT p.stock, v.total AS total_venta,
+   stock | total_venta | lineas
+   26 | 0.00 | 0
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   OK, filas afectadas = 1
+> SELECT stock FROM producto WHERE codigo_producto = 9
+   stock
+   0
+> INSERT INTO venta (fecha) VALUES ('2026-10-20')
+   OK, filas afectadas = 1
+> SET @v2 := LAST_INSERT_ID()
+   OK, filas afectadas = 0
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   ERROR 1644: Stock insuficiente para completar la venta
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT stock AS stock_tras_rollback FROM producto WHERE codigo_producto = 9
+   stock_tras_rollback
+   26
+
+######## S4
+> START TRANSACTION
+   OK, filas afectadas = 0
+> INSERT INTO venta (fecha) VALUES ('2026-10-20')
+   OK, filas afectadas = 1
+> SET @v := LAST_INSERT_ID()
+   OK, filas afectadas = 0
+> SELECT numero_venta, total AS total_inicial FROM venta WHERE numero_venta = @v
+   numero_venta | total_inicial
+   11 | 0.00
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   OK, filas afectadas = 1
+> INSERT INTO detalle_venta (numero_venta, codigo_producto, cantidad, precio)
+   OK, filas afectadas = 1
+> SELECT v.numero_venta, v.total AS total_cabecera,
+   numero_venta | total_cabecera | suma_detalle
+   11 | 95.00 | 95.00
+> ROLLBACK
+   OK, filas afectadas = 0
+> SELECT COUNT(*) AS ventas_registradas FROM venta
+   ventas_registradas
+   6
+
+######## O1
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT (SELECT stock FROM producto WHERE codigo_producto = 3) AS stock_prod_3,
+   stock_prod_3 | total_venta_2
+   54 | 42.50
+> DELETE FROM detalle_venta WHERE numero_venta = 2 AND codigo_producto = 3
+   OK, filas afectadas = 1
+> SELECT (SELECT stock FROM producto WHERE codigo_producto = 3) AS stock_prod_3,
+   stock_prod_3 | total_venta_2 | suma_detalle_2
+   54 | 42.50 | 0.00
+> ROLLBACK
+   OK, filas afectadas = 0
+
+######## O1_mejora
+> START TRANSACTION
+   OK, filas afectadas = 0
+> SELECT (SELECT stock FROM producto WHERE codigo_producto = 3) AS stock_prod_3,
+   stock_prod_3 | total_venta_2
+   54 | 42.50
+> DELETE FROM detalle_venta WHERE numero_venta = 2 AND codigo_producto = 3
+   OK, filas afectadas = 1
+> SELECT (SELECT stock FROM producto WHERE codigo_producto = 3) AS stock_prod_3,
+   stock_prod_3 | total_venta_2 | suma_detalle_2
+   55 | 0.00 | 0.00
+> ROLLBACK
+   OK, filas afectadas = 0

@@ -1,0 +1,11 @@
+﻿codigo_producto;nombre;descripcion;precio_unitario;stock;codigo_almacen
+1;Aceite esencial de lavanda;Frasco de 30 ml;35.00;43;1
+2;Aceite de almendras para masaje;Botella de 500 ml;48.00;32;1
+3;Crema hidratante facial;Pote de 50 g;42.50;54;1
+4;Mascarilla de arcilla verde;Pote de 200 g;38.00;41;1
+5;Esmalte en gel;Frasco de 15 ml, colores surtidos;18.00;107;2
+6;Removedor de esmalte;Botella de 250 ml;9.50;69;2
+7;Sales de baño aromáticas;Bolsa de 500 g;25.00;64;1
+8;Exfoliante corporal de café;Pote de 300 g;45.00;34;1
+9;Cera depilatoria tibia;Pote de 400 g;32.00;26;1
+10;Toallas descartables;;28.00;88;2
